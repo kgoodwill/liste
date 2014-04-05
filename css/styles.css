@@ -37,6 +37,12 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
 	background: green;
 	color: white;
 }
+
+.btn-add-panel2{
+	background: rgba(0, 170, 0, 1);
+	color: white;
+}
+
 .btn-del-panel{
 	background: red;
 	color: white;

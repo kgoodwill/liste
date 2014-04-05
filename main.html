@@ -61,51 +61,65 @@
 
     <form action="#" method="get">
       Item: <input type="text" id="next_item">
-      <button type="submit" class="btn btn-default btn-add-panel"><span class="glyphicon glyphicon-pencil"></span> Add</button>
+      <button type="submit" class="btn btn-default btn-add-panel"><span class="glyphicon glyphicon-pencil"></span> Add (main list)</button>
+      <button type="submit" class="btn btn-default btn-add-panel2"><span class="glyphicon glyphicon-pencil"></span> Add (side list)</button>
     </form>
     <br>
 
-    <div class="panel-group" id="accordion">
-    <!--
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a class="accordion-toggle" data-toggle="collapse" data-parent="#collapseOne" href="#collapseOne">
-            Item 1
-              <button type="submit" class="btn btn-default btn-del-panel"><i class="glyphicon glyphicon-remove"></i> Remove</button>
-            </a>
-          </h4>
-        </div>
+    <!-- Main List -->
+    <div class="col-xs-6">
+    <h3>Weeklies</h3>
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default template">
 
-        <div id="collapseOne" class="panel-collapse collapse">
-          <div class="panel-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#collapseOne" href="#collapseOne">
+                Example
+              </a>
+            </h4>
           </div>
+
+          <div id="collapseOne" class="panel-collapse collapse">
+            <div class="panel-body">
+              Item description goes here.
+              <br><br>
+              <button type="submit" class="btn btn-default btn-del-panel"><span class="glyphicon glyphicon-remove"></span> Remove</button>
+            </div>
+          </div>
+
         </div>
       </div>
-    -->
-      <div class="panel panel-default template">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a class="accordion-toggle" data-toggle="collapse" data-parent="#collapseOne" href="#collapseOne">
-              Example
-            </a>
-          </h4>
-        </div>
+    </div>
 
-        <div id="collapseOne" class="panel-collapse collapse">
-          <div class="panel-body">
-            Food description goes here.
-            <br><br>
-            <button type="submit" class="btn btn-default btn-del-panel"><span class="glyphicon glyphicon-remove"></span> Remove</button>
+    <!-- Side List -->
+    <div class="col-xs-6">
+    <h3>One-offs</h3>
+      <div class="panel-group" id="accordion2">
+        <div class="panel panel-default template2">
+
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#collapseOneSide" href="#collapseOneSide">
+                Example
+              </a>
+            </h4>
           </div>
+
+          <div id="collapseOneSide" class="panel-collapse collapse">
+            <div class="panel-body">
+              Item description goes here.
+              <br><br>
+              <button type="submit" class="btn btn-default btn-del-panel"><span class="glyphicon glyphicon-remove"></span> Remove</button>
+            </div>
+          </div>
+
         </div>
       </div>
-
     </div>
 
     <div id="footer">
-      <p class="text-muted">Made with love at Bitcamp 2014 by Adam Almonte, Kyle Goodwill, Amanda Kobiolka, & Geoff Yip</p>
+      <p class="text-muted">Made at Bitcamp 2014 by Adam Almonte, Kyle Goodwill, Amanda Kobiolka, and Geoff Yip</p>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -119,7 +133,9 @@
       });*/
 
       var $template = $(".template");
+      var $template2 = $(".template2");
       var hash = 1;
+      var hash2 = 1000;
       $(".btn-add-panel").on("click", function () {
         var item = $('#next_item').val();
         var $newPanel = $template.clone();
@@ -131,9 +147,15 @@
         $("#accordion").append($newPanel.fadeIn());
       });
 
-    $('#accordion h3 input[type=submit]').click(function (event) {
-        event.stopPropagation();
-    });
+      $(".btn-add-panel2").on("click", function () {
+        var item2 = $('#next_item').val();
+        var $newPanel2 = $template2.clone();
+        $newPanel2.find(".collapse").removeClass("in");
+        $newPanel2.find(".accordion-toggle").attr("href",  "#" + (++hash2))
+                  .text(item2);
+        $newPanel2.find(".panel-collapse").attr("id", hash2).addClass("collapse").removeClass("in");
+        $("#accordion2").append($newPanel2.fadeIn());
+      });
     </script>
 
   </body>
