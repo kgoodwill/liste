@@ -136,11 +136,21 @@
         alert($(this).val());
       });*/
 
+$(document).ready(function() {
+     $('input[type="submit"]').attr('disabled','disabled');
+     $('input[type="text"]').keyup(function() {
+        if($(this).val() != '') {
+           $('input[type="submit"]').removeAttr('disabled');
+        }
+     });
+ });
+
       var $template = $(".template");
       var $template2 = $(".template2");
       var hash = 1;
       var hash2 = 1000;
       $(".btn-add-panel").on("click", function () {
+
         var item = $('#next_item').val();
         var $newPanel = $template.clone();
         $newPanel.find(".collapse").removeClass("in");
