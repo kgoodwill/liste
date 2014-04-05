@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Smart List</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Liste: The Smart Shopping List</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -27,17 +28,16 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Smart List</a>
+            <a class="navbar-brand" href="#">Liste</a>
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-left">
 
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#">What is this?</a></li>
-                <li><a href="#">Who made this?/a></li>
-                <li><a href="#">Something else here</a></li>
+                <li><a href="#">Who made this?</a></li>
               </ul>
             </li>
 
@@ -54,16 +54,87 @@
 
   <body>
 
-    <h1>Hello, world!</h1>
-    <!-- bootstrap collapsible for -->
+    <h1>Make your shopping list!</h1>
+    <!-- http://stackoverflow.com/questions/3446084/jquery-how-can-i-dynamically-add-a-list-item-to-an-unordered-list-->
+    <p>The main list is a list of items that you want to buy every week. The side list is comprised of items that you only need to buy this one time. After making your list, click the email button to mail a copy of the list to yourself!</p>
 
 
-  <div id="footer">
+    <form action="#" method="get">
+      Item: <input type="text" id="next_item">
+      <button type="submit" class="btn btn-default btn-add-panel"><span class="glyphicon glyphicon-pencil"></span> Add</button>
+    </form>
+    <br>
+
+    <div class="panel-group" id="accordion">
+    <!--
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#collapseOne" href="#collapseOne">
+            Item 1
+              <button type="submit" class="btn btn-default btn-del-panel"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+            </a>
+          </h4>
+        </div>
+
+        <div id="collapseOne" class="panel-collapse collapse">
+          <div class="panel-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+          </div>
+        </div>
+      </div>
+    -->
+      <div class="panel panel-default template">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#collapseOne" href="#collapseOne">
+              Example
+            </a>
+          </h4>
+        </div>
+
+        <div id="collapseOne" class="panel-collapse collapse">
+          <div class="panel-body">
+            Food description goes here.
+            <br><br>
+            <button type="submit" class="btn btn-default btn-del-panel"><span class="glyphicon glyphicon-remove"></span> Remove</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="footer">
       <p class="text-muted">Made with love at Bitcamp 2014 by Adam Almonte, Kyle Goodwill, Amanda Kobiolka, & Geoff Yip</p>
-  </div>
+    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+
+    <script>
+    /*
+      $(document).on("click", ":submit", function(e){
+        alert($(this).val());
+      });*/
+
+      var $template = $(".template");
+      var hash = 1;
+      $(".btn-add-panel").on("click", function () {
+        var item = $('#next_item').val();
+        var $newPanel = $template.clone();
+        $newPanel.find(".collapse").removeClass("in");
+        $newPanel.find(".accordion-toggle").attr("href",  "#" + (++hash))
+                  .text(item);
+                 //.text("Dynamic panel #" + hash);
+        $newPanel.find(".panel-collapse").attr("id", hash).addClass("collapse").removeClass("in");
+        $("#accordion").append($newPanel.fadeIn());
+      });
+
+    $('#accordion h3 input[type=submit]').click(function (event) {
+        event.stopPropagation();
+    });
+    </script>
+
   </body>
 </html>
