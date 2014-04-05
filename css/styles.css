@@ -29,8 +29,14 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
 .panel-heading{text-decoration: none;}
 
 .btn-add-panel{
-	background: green;
+	background: rgba(0, 130, 0, 1);
 	color: white;
+}
+
+.btn-add-panel:hover{
+	color: #333;
+	background-color: rgba(0, 130, 0, 0.5);
+	border-color: #adadad;
 }
 
 .btn-add-panel2{
@@ -38,10 +44,23 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
 	color: white;
 }
 
+.btn-add-panel2:hover{
+	color: #333;
+	background-color: rgba(0, 170, 0, 0.5);
+	border-color: #adadad;
+}
+
 .btn-del-panel{
-	background: red;
+	background: rgba(170, 0, 0, 1);
 	color: white;
 }
+
+.btn-del-panel:hover{
+	color: #333;
+	background-color: rgba(130, 0, 0, 0.5);
+	border-color: #adadad;
+}
+
 /**/
 .footer {
   position: relative;
@@ -51,3 +70,18 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
   padding-top:20px;
   text-align: center;
 } 
+
+.footer > .btn-email{
+	background: rgba(50, 50, 200, 1);
+	color: white;
+	margin: 20px;
+}
+.footer > .btn-email:hover{
+	color: #333;
+	background-color: rgba(50, 50, 200, 0.5);
+	border-color: #adadad;
+}
+
+.centered{
+	text-align: center;
+}

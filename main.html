@@ -45,7 +45,7 @@
   </head>
 
   <body>
-
+  <div class="centered">
     <h1>Make your shopping list!</h1>
     <!-- http://stackoverflow.com/questions/3446084/jquery-how-can-i-dynamically-add-a-list-item-to-an-unordered-list-->
     <p>The main list is a list of items that you want to buy every week. The side list is comprised of items that you only need to buy this one time. After making your list, click the email button to mail a copy of the list to yourself!</p>
@@ -53,11 +53,11 @@
 
     <form action="#" method="get">
       Item: <input type="text" id="next_item">
-      <button type="submit" class="btn btn-default btn-add-panel"><span class="glyphicon glyphicon-pencil"></span> Add (main list)</button>
-      <button type="submit" class="btn btn-default btn-add-panel2"><span class="glyphicon glyphicon-pencil"></span> Add (side list)</button>
+      <button type="submit" class="btn btn-default btn-add-panel" id="mainbutton"><span class="glyphicon glyphicon-pencil"></span> Add (main list)</button>
+      <button type="submit" class="btn btn-default btn-add-panel2" id="sidebutton"><span class="glyphicon glyphicon-pencil"></span> Add (side list)</button>
     </form>
     <br>
-
+  </div>
     <!-- Main List -->
     <div class="col-xs-6">
     <h3>Weeklies</h3>
@@ -111,10 +111,12 @@
     </div>
 
     <footer class="footer">
+      <button type="submit" class="btn btn-default btn-email"><span class="glyphicon glyphicon-envelope"></span> Email your list</button>
+
       <p class="text-muted">Made at Bitcamp 2014 by Adam Almonte, Kyle Goodwill, Amanda Kobiolka, and Geoff Yip</p>
       <a href="https://github.com/kgoodwill/liste"><img src="img/Github_Logo.png"></a>
-      <p>        </p>
-      <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
+      <br><!--
+      <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a> -->
     </footer>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -127,15 +129,6 @@
         alert($(this).val());
       });*/
 
-$(document).ready(function() {
-     $('input[type="submit"]').attr('disabled','disabled');
-     $('input[type="text"]').keyup(function() {
-        if($(this).val() != '') {
-           $('input[type="submit"]').removeAttr('disabled');
-        }
-     });
- });
-
       var $template = $(".template");
       var $template2 = $(".template2");
       var hash = 1;
@@ -143,23 +136,27 @@ $(document).ready(function() {
       $(".btn-add-panel").on("click", function () {
 
         var item = $('#next_item').val();
-        var $newPanel = $template.clone();
-        $newPanel.find(".collapse").removeClass("in");
-        $newPanel.find(".accordion-toggle").attr("href",  "#" + (++hash))
-                  .text(item);
-                 //.text("Dynamic panel #" + hash);
-        $newPanel.find(".panel-collapse").attr("id", hash).addClass("collapse").removeClass("in");
-        $("#accordion").append($newPanel.fadeIn());
+        if (item != ""){
+          var $newPanel = $template.clone();
+          $newPanel.find(".collapse").removeClass("in");
+          $newPanel.find(".accordion-toggle").attr("href",  "#" + (++hash))
+                    .text(item);
+                   //.text("Dynamic panel #" + hash);
+          $newPanel.find(".panel-collapse").attr("id", hash).addClass("collapse").removeClass("in");
+          $("#accordion").append($newPanel.fadeIn());
+        }
       });
 
       $(".btn-add-panel2").on("click", function () {
         var item2 = $('#next_item').val();
-        var $newPanel2 = $template2.clone();
-        $newPanel2.find(".collapse").removeClass("in");
-        $newPanel2.find(".accordion-toggle").attr("href",  "#" + (++hash2))
-                  .text(item2);
-        $newPanel2.find(".panel-collapse").attr("id", hash2).addClass("collapse").removeClass("in");
-        $("#accordion2").append($newPanel2.fadeIn());
+        if (item2 != ""){
+          var $newPanel2 = $template2.clone();
+          $newPanel2.find(".collapse").removeClass("in");
+          $newPanel2.find(".accordion-toggle").attr("href",  "#" + (++hash2))
+                    .text(item2);
+          $newPanel2.find(".panel-collapse").attr("id", hash2).addClass("collapse").removeClass("in");
+          $("#accordion2").append($newPanel2.fadeIn());
+        }
       });
 
       !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
