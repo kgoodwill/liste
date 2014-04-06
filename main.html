@@ -90,7 +90,7 @@
       <div class="panel-group" id="accordion2">
         <div class="panel panel-default template2">
 
-          <div class="panel-heading">
+          <div class="panel-heading" id="sidekick">
             <h4 class="panel-title">
               <a class="accordion-toggle" data-toggle="collapse" data-parent="#collapseOneSide" href="#collapseOneSide">
                 Example
@@ -122,6 +122,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/hammer.min.js"></script>
+    <script src="js/jquery.hammer.min.js"></script>
 
     <script>
     /*
@@ -133,6 +135,7 @@
       var $template2 = $(".template2");
       var hash = 1;
       var hash2 = 1000;
+      var $newestPanel = $(".template");
       $(".btn-add-panel").on("click", function () {
 
         var item = $('#next_item').val();
@@ -144,6 +147,7 @@
                    //.text("Dynamic panel #" + hash);
           $newPanel.find(".panel-collapse").attr("id", hash).addClass("collapse").removeClass("in");
           $("#accordion").append($newPanel.fadeIn());
+          $newestPanel = $(".newPanel");
         }
       });
 
@@ -156,8 +160,18 @@
                     .text(item2);
           $newPanel2.find(".panel-collapse").attr("id", hash2).addClass("collapse").removeClass("in");
           $("#accordion2").append($newPanel2.fadeIn());
+          $newestPanel = $(".newPanel2");
         }
       });
+
+        window.addEventListener('load', function() { 
+        var element = document.getElementById('sidekick');
+        var hammertime = Hammer(element).on("hold", function(event) {
+          var $newPanel3 = $newestPanel.clone();
+
+          $("#accordion").append($newPanel3.fadeIn());
+        })
+      }, false);
 
       !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
