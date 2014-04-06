@@ -26,7 +26,8 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
     box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba(229, 103, 23, 0.6);
     outline: 0 none;
 }
-.panel-heading{text-decoration: none;}
+
+
 
 .btn-add-panel{
 	background: rgba(0, 130, 0, 1);
@@ -85,3 +86,71 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
 .centered{
 	text-align: center;
 }
+/**/
+.panel-heading2 {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel-heading2 > .dropdown .dropdown-toggle {
+  color: inherit;
+}
+.panel-heading2 + .list-group .list-group-item:first-child {
+  border-top-width: 0;
+}
+.panel-group .panel-heading2 {
+  border-bottom: 0;
+}
+.panel-group .panel-heading2 + .panel-collapse .panel-body {
+  border-top: 1px solid #ddd;
+}
+.panel-default > .panel-heading2 {
+  color: #333;
+  background-color: #f5f5f5;
+  border-color: #ddd;
+}
+.panel-default > .panel-heading2 + .panel-collapse .panel-body {
+  border-top-color: #ddd;
+}
+.panel-primary > .panel-heading2 {
+  color: #fff;
+  background-color: #428bca;
+  border-color: #428bca;
+}
+.panel-primary > .panel-heading2 + .panel-collapse .panel-body {
+  border-top-color: #428bca;
+}
+.panel-success > .panel-heading2 {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+.panel-success > .panel-heading2 + .panel-collapse .panel-body {
+  border-top-color: #d6e9c6;
+}
+.panel-info > .panel-heading2 {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+.panel-info > .panel-heading2 + .panel-collapse .panel-body {
+  border-top-color: #bce8f1;
+}
+.panel-warning > .panel-heading2 {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+.panel-warning > .panel-heading2 + .panel-collapse .panel-body {
+  border-top-color: #faebcc;
+}
+.panel-danger > .panel-heading2 {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+.panel-danger > .panel-heading2 + .panel-collapse .panel-body {
+  border-top-color: #ebccd1;
+}
+
